@@ -24,12 +24,12 @@ export default function Footer() {
             rel="noreferrer"
           >
             <FaTwitter style={{ display: "inline" }} />
-            @shwosner
+            @haseebdevv
           </a>
         </GridItem>
         <GridItem justifySelf="end">
           <a
-            href="https://github.com/haseeb-developer/realtime-chat-supabase-react"
+            href="https://github.com/haseeb-developer/random-live-chat"
             target="_blank"
             rel="noreferrer"
           >
