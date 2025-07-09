@@ -4,8 +4,18 @@ import "./App.css";
 import Header from "./layout/Header";
 import Footer from "./layout/Footer";
 import Chat from "./components/Chat";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, useLocation } from "react-router-dom";
+import { useEffect } from "react";
 import { AppContextProvider, useAppContext } from "./context/appContext";
+
+function useVercelAnalytics() {
+  const location = useLocation();
+  useEffect(() => {
+    if (window.va) {
+      window.va('pageview');
+    }
+  }, [location]);
+}
 
 function App() {
   const { username, setUsername, routeHash } = useAppContext();
@@ -29,24 +39,31 @@ function App() {
       <AppContextProvider>
         <Box bg="gray.100">
           <Router>
-            <Routes>
-              <Route
-                path="/"
-                element={
-                  <>
-                    <Header />
-                    <Chat />
-                    <Footer />
-                  </>
-                }
-              />
-              <Route path="*" element={<p>Not found</p>} />
-            </Routes>
+            <VercelAnalyticsWrapper>
+              <Routes>
+                <Route
+                  path="/"
+                  element={
+                    <>
+                      <Header />
+                      <Chat />
+                      <Footer />
+                    </>
+                  }
+                />
+                <Route path="*" element={<p>Not found</p>} />
+              </Routes>
+            </VercelAnalyticsWrapper>
           </Router>
         </Box>
       </AppContextProvider>
     </Provider>
   );
+}
+
+function VercelAnalyticsWrapper({ children }) {
+  useVercelAnalytics();
+  return children;
 }
 
 export default App;
