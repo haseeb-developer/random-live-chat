@@ -50,7 +50,7 @@ export default function MessageForm() {
 
   return (
     <Box py="10px" pt="15px" bg="gray.100">
-      <Container maxW="600px">
+      <Container maxW="900px">
         <form onSubmit={handleSubmit} autoComplete="off">
           <Stack direction="row">
             <Input
@@ -62,6 +62,8 @@ export default function MessageForm() {
               border="none"
               autoFocus
               maxLength="500"
+              color="#222"
+              _placeholder={{ color: '#888' }}
             />
             <IconButton
               background="teal"
@@ -78,7 +80,7 @@ export default function MessageForm() {
             </IconButton>
           </Stack>
         </form>
-        <Box fontSize="10px" mt="1">
+        <Box fontSize="10px" mt="1" color="#222">
           Warning: do not share any sensitive information, it's a public chat
           room 🙂
         </Box>

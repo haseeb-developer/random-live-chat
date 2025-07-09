@@ -70,6 +70,12 @@ export default function Message({ message, isYou }) {
           wordBreak="break-word"
           fontSize="md"
           fontFamily="Montserrat, sans-serif"
+          color="#222"
+          bg="rgba(255,255,255,0.7)"
+          px="3"
+          py="2"
+          borderRadius="6px"
+          boxShadow="0 2px 8px rgba(0,0,0,0.07)"
         >
           {truncateText(message.text)}
         </GridItem>

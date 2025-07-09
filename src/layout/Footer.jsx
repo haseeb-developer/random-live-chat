@@ -19,7 +19,7 @@ export default function Footer() {
           {/* Built by{" "} */}
           {/* <a href="http://shimon-wosner.vercel.app" target="_blank"> */}
           <a
-            href="https://twitter.com/shwosner"
+            href="https://twitter.com/haseebdevv"
             target="_blank"
             rel="noreferrer"
           >
@@ -29,7 +29,7 @@ export default function Footer() {
         </GridItem>
         <GridItem justifySelf="end">
           <a
-            href="https://github.com/shwosner/realtime-chat-supabase-react"
+            href="https://github.com/haseeb-developer/realtime-chat-supabase-react"
             target="_blank"
             rel="noreferrer"
           >

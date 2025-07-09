@@ -4,7 +4,7 @@ import supabase from "../supabaseClient";
 const AppContext = createContext({});
 
 const AppContextProvider = ({ children }) => {
-  let myChannel = null;
+  const myChannel = useRef(null);
   const [username, setUsername] = useState("");
   const [session, setSession] = useState(null);
   const [messages, setMessages] = useState([]);
@@ -88,10 +88,9 @@ const AppContextProvider = ({ children }) => {
 
     return () => {
       // Remove supabase channel subscription by useEffect unmount
-      if (myChannel) {
-        supabase.removeChannel(myChannel);
+      if (myChannel.current) {
+        supabase.removeChannel(myChannel.current);
       }
-
       authSubscription.unsubscribe();
     };
   }, []);
@@ -138,15 +137,8 @@ const AppContextProvider = ({ children }) => {
 
     await getInitialMessages();
 
-    if (!myChannel) {
-      // mySubscription = supabase
-      // .from("messages")
-      // .on("*", (payload) => {
-      //   handleNewMessage(payload);
-      // })
-      // .subscribe();
-
-      myChannel = supabase
+    if (!myChannel.current) {
+      myChannel.current = supabase
         .channel("custom-all-channel")
         .on(
           "postgres_changes",
